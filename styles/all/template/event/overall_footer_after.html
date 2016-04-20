@@ -1,0 +1,21 @@
+<!-- IF !S_USER_LOGGED_IN -->
+<!-- INCLUDEJS @anavaro_trackntrace/js/fingerprint2.min.js -->
+<!-- INCLUDEJS @anavaro_trackntrace/js/js.cookie.js -->
+<script>
+	(function($) {  // Avoid conflicts with other libraries
+		"use strict"
+		$(function () {
+			var opt = { excludeUserAgent: true };
+			new Fingerprint2(opt).get(function(result, components){
+				//console.log(result); //a hash, representing your device fingerprint
+				Cookies.set('phpbb_fp2', result, { expires: 1/96 });
+				//console.log(components); // an array of FP components
+				//alert("{SESSION_USE_FINGERPRINT}".slice(0,-1) + result);
+				//$.post( "{SESSION_USE_FINGERPRINT}".slice(0,-1) + result );
+			});
+		});
+	})(jQuery); // Avoid conflicts with other libraries
+
+</script>
+<!-- ENDIF -->
+

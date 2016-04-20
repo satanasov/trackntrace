@@ -1,0 +1,108 @@
+<!-- INCLUDE overall_header.html -->
+<!-- IF S_STAGE == 'search' -->
+	<h1>{L_FINGERPRINT_SEARCH}</h1>
+
+	<p>{L_FINGERPRINT_SEARCH_EXPLAIN}</p>
+
+	<form id="session_search" method="post" action="{U_ACTION}">
+
+	<fieldset>
+		<legend>{L_FINGERPRINT_SEARCH_FOR}</legend>
+	<dl>
+		<dt><label for="username">{L_ENTER_USERNAME}{L_COLON}</label></dt>
+		<dd><input class="text medium" type="text" id="username" name="username" /></dd>
+		<dd><label><input type="radio" class="radio" id="username" name="case" value="username" /> {L_SELECT_USERNAME}</label></dd>
+		<dd><label><input type="radio" class="radio" id="userid" name="case" value="userid" /> {L_SELECT_ID}</label></dd>
+		<dd><label><input type="radio" class="radio" id="fingerprint" name="case" value="fingerprint" /> {L_SELECT_FINGERPRINT}</label></dd>
+	</dl>
+
+	<p class="quick">
+		<input type="submit" name="submituser" value="{L_SUBMIT}" class="button1" />
+	</p>
+	</fieldset>
+
+	</form>
+<!-- ELSEIF S_STAGE == 'user' -->
+	<h1>{FINGERPRINT_SEARCH_USER}</h1>
+
+	<p>{FINGERPRINT_SEARCH_USER}</p>
+	<fieldset>
+		<legend>{L_FINGERPRINT_SEARCH_USER_UNIQUE_FINGERPRINTS}</legend>
+	<dl>
+		<table class="table1 zebra-table fixed-width-table">
+			<!-- BEGIN user_fingers -->
+				<tr>
+					<td>{user_fingers.USER_FINGERPRINT}</td>
+				</tr>
+			<!-- END user_fingers -->
+		</table>
+	</dl>
+	</fieldset>
+	
+	<fieldset>
+		<legend>{L_USER_FINGERPRINTS}</legend>
+		<table class="table1 zebra-table fixed-width-table">
+	<thead>
+	<tr>
+		<th style="width: 25%;">{L_FINGERPRINT}</th>
+		<th style="width: 10%;">{L_SESSION_START}</th>
+		<th>{L_SESSION_BROWSER}</th>
+	</tr>
+	</thead>
+	<tbody>
+		<!-- BEGIN fingerprints -->
+			<tr>
+				<td>{fingerprints.FINGERPRINT} </td>
+				<td>{fingerprints.SESSION_START}</td>
+				<td>{fingerprints.USER_AGENT}</td>
+			</tr>
+		<!-- END fingerprints -->
+	</tbody>
+	</table>
+	</fieldset>
+<!-- ELSEIF S_STAGE == 'fingerprint' -->
+	<h1>{FP_SEARCH}</h1>
+
+	<p>{L_FINGERPRINT_SEARCH_EXPLAIN}</p>
+	<fieldset>
+		<legend>{L_FINGERPRINT_SEARCH_FP_UNIQUE_USERS}</legend>
+	<dl>
+		<table class="table1 zebra-table fixed-width-table">
+			<!-- BEGIN fp_users -->
+				<tr>
+					<td>{fp_users.USERNAME}</td>
+				</tr>
+			<!-- END fp_users -->
+		</table>
+	</dl>
+	</fieldset>
+	
+	<fieldset>
+		<legend>{L_SESSION_SEARCH_SESSIONS}</legend>
+		<table class="table1 zebra-table fixed-width-table">
+	<thead>
+	<tr>
+		<th style="width: 10%;">{L_USERNAME}</th>
+		<th style="width: 10%;">{L_SESSION_START}</th>
+		<th style="width: 25%;">{L_FINGERPRINT}</th>
+		<th>{L_SESSION_BROWSER}</th>
+	</tr>
+	</thead>
+	<tbody>
+		<!-- BEGIN fingers -->
+			<tr>
+				<td>{fingers.USER_NAME}</td>
+				<td>{fingers.SESSION_START}</td>
+				<td>{fingers.FINGERPRINT}</td>
+				<td>{fingers.SESSION_BROWSER}</td>
+			</tr>
+		<!-- END fingers -->
+	</tbody>
+	</table>
+	</fieldset>
+<!-- ENDIF -->
+
+<div id="page-footer">
+Track and Trace By <a href="http://www.anavaro.com/">Lucifer</a>
+</div>
+<!-- INCLUDE overall_footer.html -->

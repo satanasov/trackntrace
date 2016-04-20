@@ -1,0 +1,13 @@
+parameters:
+    tables.fingerprint: %core.table_prefix%fingerprint
+
+services:
+    anavaro.trackntrace.events:
+        class: anavaro\trackntrace\event\main_listener
+        arguments:
+            - @request
+            - @user
+            - @dbal.conn
+            - %tables.fingerprint%
+        tags:
+            - { name: event.listener }
