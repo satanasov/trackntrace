@@ -54,7 +54,7 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 	{
 		return array(
 			'drop_tables'		=> array(
-				//$this->table_prefix . 'fingerprint',
+				$this->table_prefix . 'fingerprint',
 			),
 		);
 	}
