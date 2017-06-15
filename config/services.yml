@@ -5,9 +5,9 @@ services:
     anavaro.trackntrace.events:
         class: anavaro\trackntrace\event\main_listener
         arguments:
-            - @request
-            - @user
-            - @dbal.conn
-            - %tables.fingerprint%
+            - '@request'
+            - '@user'
+            - '@dbal.conn'
+            - '%tables.fingerprint%'
         tags:
             - { name: event.listener }
