@@ -23,6 +23,11 @@ class main_listener implements EventSubscriberInterface
 		);
 	}
 
+	private $request;
+	private $user;
+	private $db;
+	private $fingerprint_table;
+
 	public function __construct(\phpbb\request\request $request, \phpbb\user $user, \phpbb\db\driver\driver_interface $db,
 	$fingerprint_table)
 	{
