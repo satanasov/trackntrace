@@ -68,7 +68,7 @@ class acp_trackntrace_module
 					$this->page_title = $user->lang('SESSION_SEARCH_ID_BASE', $user_id);
 				}
 				// Let's get list of users fingerprints
-				$sql = 'SELECT DISTINCT(fingerprint) FROM ' . $table_prefix . 'fingerprint WHERE user_id = ' . $user_id . ' ORDER BY session_start DESC';
+				$sql = 'SELECT DISTINCT(fingerprint), session_start FROM ' . $table_prefix . 'fingerprint WHERE user_id = ' . $user_id . ' ORDER BY session_start DESC';
 				$result = $db->sql_query($sql);
 				while ($row = $db->sql_fetchrow($result))
 				{
@@ -99,7 +99,7 @@ class acp_trackntrace_module
 					'FP_SEARCH'	=> $user->lang('FINGERPRINT_SEARCH_IP_BASE', $user_fp),
 					'S_STAGE'	=> 'fingerprint',
 				));
-				$sql = 'SELECT DISTINCT(user_id) as user_id FROM ' . $table_prefix . 'fingerprint WHERE fingerprint = \'' . $user_fp . '\' ORDER BY session_start DESC';
+				$sql = 'SELECT DISTINCT(user_id) as user_id, session_start FROM ' . $table_prefix . 'fingerprint WHERE fingerprint = \'' . $user_fp . '\' ORDER BY session_start DESC';
 				$result = $db->sql_query($sql);
 				$user_ids = array();
 				while ($row = $db->sql_fetchrow($result))
