@@ -17,6 +17,7 @@
 			} else {
 				setTimeout(function () {
 					Fingerprint2.get(opt, function (components) {
+						var result = Fingerprint2.x64hash128(components.map(function (pair) { return pair.value }).join(), 31)
 						Cookies.set('phpbb_fp2', result, { expires: 1/96 });
 					})
 				}, 500)
