@@ -10,25 +10,17 @@
 			if (window.requestIdleCallback) {
 				requestIdleCallback(function () {
 					Fingerprint2.get(opt, function (components) {
-						console.log(components) // an array of components: {key: ..., value: ...}
-						console.log(Fingerprint2.x64hash128(components.map(function (pair) { return pair.value }).join(), 31))
+						var result = Fingerprint2.x64hash128(components.map(function (pair) { return pair.value }).join(), 31)
+						Cookies.set('phpbb_fp2', result, { expires: 1/96 });
 					})
 				})
 			} else {
 				setTimeout(function () {
 					Fingerprint2.get(opt, function (components) {
-						console.log(components) // an array of components: {key: ..., value: ...}
-						console.log(Fingerprint2.x64hash128(components.map(function (pair) { return pair.value }).join(), 31))
+						Cookies.set('phpbb_fp2', result, { expires: 1/96 });
 					})
 				}, 500)
 			}
-			//new Fingerprint2(opt).get(function(result, components){
-				//console.log(result); //a hash, representing your device fingerprint
-			//	Cookies.set('phpbb_fp2', result, { expires: 1/96 });
-				//console.log(components); // an array of FP components
-				//alert("{SESSION_USE_FINGERPRINT}".slice(0,-1) + result);
-				//$.post( "{SESSION_USE_FINGERPRINT}".slice(0,-1) + result );
-			//});
 		});
 	})(jQuery); // Avoid conflicts with other libraries
 
